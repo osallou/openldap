@@ -76,7 +76,9 @@ prefix used in `modules/ppolicy.ldif` for the `olcPPolicyDefault` attribute.  Th
 value used for `olcPPolicyDefault` is derived from `$SLAPD_PPOLICY_DN_PREFIX,(dc
 component parts from $SLAPD_DOMAIN)`.
 
-After loading the module, you have to load a default password policy. The 
+* Optional env variable to set olcPPolicyHashCleartext for ppolicy `SLAPD_PPOLICY_HASH`.
+
+After loading the module, you have to load a default password policy. The
 contents of `default-policy.ldif` should look something like this:
 
 ```
