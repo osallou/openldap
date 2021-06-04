@@ -89,6 +89,9 @@ EOF
                  SLAPD_PPOLICY_DN_PREFIX="${SLAPD_PPOLICY_DN_PREFIX:-cn=default,ou=policies}"
 
                  sed -i "s/\(olcPPolicyDefault: \)PPOLICY_DN/\1${SLAPD_PPOLICY_DN_PREFIX}$dc_string/g" $module_file
+		 if [[ -n "$SLAPD_PPOLICY_HASH" ]]; then
+		     sed -i "s/olcPPolicyHashCleartext: FALSE/olcPPolicyHashCleartext: TRUE/g"  $module_file
+		 fi
              fi
 
              slapadd -n0 -F /etc/ldap/slapd.d -l "$module_file"
